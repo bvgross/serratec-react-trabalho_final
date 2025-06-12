@@ -1,11 +1,11 @@
-import { Routes } from './Routes/Routes'
+import { Rotas } from './Routes/Routes'
 
 import './App.css'
 
 function App() {
   
   return (
-    <Routes/>
+    <Rotas/>
   )
 }
 

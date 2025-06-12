@@ -1,0 +1,36 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0.5rem;
+    width: 250px;
+    box-shadow: 0 6px 5px rgba(250, 249, 249, 0.2);
+    color:#111
+}
+
+
+img {
+    max-width: 100px;
+    height: auto;
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+.imgContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.description {
+    font-size: 0.9rem;
+    color: #000000;
+}

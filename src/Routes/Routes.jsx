@@ -5,7 +5,7 @@ import {CarrinhoPage} from "../pages/carrinho/carrinho";
 import { CadastroPage } from "../pages/cadastro/cadastro";
 import { AboutPage } from "../pages/about/about";
 
-export function Routes(){
+export function Rotas(){
     return(
         <Routes>
             <Route path="/" element={<HomePage/>}/>
