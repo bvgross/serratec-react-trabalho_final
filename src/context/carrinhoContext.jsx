@@ -9,7 +9,9 @@ const CarrinhoProvider = (props) => {
     const [total, setTotal] = useState(0)
 
     function adicionarItens(produto) {
+
         const produtoExistente = carrinho.find((item) => item.id === produto.id)
+
         if (produtoExistente) {
             const novoCarrinho = carrinho.map((item) => {
                 if (item.id === produto.id) {
@@ -20,6 +22,7 @@ const CarrinhoProvider = (props) => {
 
             });
         }
+
         else {
             setCarrinho([...carrinho, { ...produto, quantidade: 1 }])
 
@@ -35,20 +38,13 @@ const CarrinhoProvider = (props) => {
                 adicionarItens, carrinho
             }}
         >
-            {
-                props.children
-            }
+            {props.children}
         </carrinhoContext.Provider>
     )
 
 }
-export function adicionarAoCarrinho () {
-    return useContext (carrinhoContext, CarrinhoProvider)
-    
+
+export function adicionarAoCarrinho() {
+    return useContext(carrinhoContext, CarrinhoProvider)
+
 }
-
-
-
-
-
-
