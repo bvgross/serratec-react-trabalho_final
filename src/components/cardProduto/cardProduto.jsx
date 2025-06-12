@@ -11,14 +11,13 @@ export function CardProduto({produto}) {
             <h2 >{produto.title}</h2>
                 <img src={produto.image} alt={produto.title} />
             
-                <p>{descricao}</p>
+                <p className={styles.description}>{descricao}</p>
                 <button onClick={() => serVerDescricao(!verDescricao)}>
                     {verDescricao ? 'Ver menos' : 'Ver mais'}
                 </button>
                 
-            <p>{produto.price}</p>
-            <span>{produto.category}</span>
-            <Button>Gaste seu dinheiro suado</Button>
+            <p>R$ {produto.price}</p>
+            <Button>Adicionar ao carrinho</Button>
         </div>
     );
 }

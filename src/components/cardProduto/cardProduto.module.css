@@ -8,19 +8,20 @@
     margin: 0.5rem;
     width: 250px;
     box-shadow: 0 6px 5px rgba(250, 249, 249, 0.2);
-    color:#111
+    color:#111;
+    height: 400px;
 }
 
 
 img {
-    max-width: 100px;
-    height: auto;
+    max-height: 100px;
 }
 
 h2 {
     font-family: 'Poppins', sans-serif;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     margin: 0.5rem 0;
+    height: 5rem;
 }
 
 .imgContainer {
@@ -31,6 +32,12 @@ h2 {
 }
 
 .description {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     color: #000000;
 }
+
+button{
+    font-size: 0.7rem;
+
+}
+

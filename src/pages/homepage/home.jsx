@@ -2,6 +2,7 @@ import { CardProduto } from "../../components/cardProduto/cardProduto"
 import styles from "./home.module.css"
 import apiProdutos from "../../services/api"
 import { useState, useEffect } from "react";
+import {carrinhoContext} from "../../context/carrinhoContext"
 
 export function HomePage(){
     const [produtos, setProdutos] = useState([]);
