@@ -1,12 +1,18 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 
 
 const carrinhoContext = createContext()
 
-const CarrinhoProvider = (props) => {
+export const CarrinhoProvider = (props) => {
     const [carrinho, setCarrinho] = useState([])
 
     const [total, setTotal] = useState(0)
+
+    useEffect(() => {
+    
+    const novoTotal = carrinho.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    setTotal(novoTotal);
+}, [carrinho]);
 
     function adicionarItens(produto) {
 
@@ -15,27 +21,38 @@ const CarrinhoProvider = (props) => {
         if (produtoExistente) {
             const novoCarrinho = carrinho.map((item) => {
                 if (item.id === produto.id) {
-                    return { ...item, quantidade: item.quantidade + 1 };
+                    return { ...item, quantity: item.quantity + 1 };
                 }
                 return item;
-                setCarrinho(novoCarrinho)
-
+                
             });
+            setCarrinho(novoCarrinho)
         }
 
         else {
-            setCarrinho([...carrinho, { ...produto, quantidade: 1 }])
+            setCarrinho([...carrinho, { ...produto, quantity: 1 }])
 
         }
 
-        console.log(carrinho)
+    console.log(carrinho)
+
+        
+        
+    //     carrinho.forEach(item=>{
+    //         const preco = item.price
+    //         const quantitade = item.quantity
+    //         const totalItem = preco * quantitade
+    //         setTotal(total + totalItem) 
+    //     })   
+
+    //    console.log(total)
 
     }
 
     return (
         <carrinhoContext.Provider
             value={{
-                adicionarItens, carrinho
+                adicionarItens, carrinho, total
             }}
         >
             {props.children}
@@ -44,7 +61,10 @@ const CarrinhoProvider = (props) => {
 
 }
 
-export function adicionarAoCarrinho() {
-    return useContext(carrinhoContext, CarrinhoProvider)
+export function useCarrinho() {
+    return useContext(carrinhoContext)
 
 }
+
+
+

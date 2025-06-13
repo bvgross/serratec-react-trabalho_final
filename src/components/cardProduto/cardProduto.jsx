@@ -1,8 +1,12 @@
 import { Button } from "../button/button";
 import styles from './cardProduto.module.css';
 import { useState } from "react";
+import { useCarrinho} from "../../context/carrinhoContext"
+
 export function CardProduto({produto}) {
+
     const [verDescricao, serVerDescricao] = useState(false);
+    const {adicionarItens} = useCarrinho();
     const descricao=verDescricao
         ? produto.description
         : produto.description.substring(0, 100) + '...';
@@ -17,7 +21,7 @@ export function CardProduto({produto}) {
                 </button>
                 
             <p>R$ {produto.price}</p>
-            <Button>Adicionar ao carrinho</Button>
+            <Button onClick={() => adicionarItens(produto)}> Adicionar ao Carrinho</Button>
         </div>
     );
 }

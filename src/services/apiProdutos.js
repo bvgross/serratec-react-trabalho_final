@@ -4,4 +4,5 @@ const apiProdutos = axios.create({
     baseURL: "https://fakestoreapi.com",
 });
 
+
 export default apiProdutos;

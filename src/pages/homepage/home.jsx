@@ -1,11 +1,13 @@
 import { CardProduto } from "../../components/cardProduto/cardProduto"
 import styles from "./home.module.css"
-import apiProdutos from "../../services/api"
+import apiProdutos from "../../services/apiProdutos"
 import { useState, useEffect } from "react";
-import {carrinhoContext} from "../../context/carrinhoContext"
+import { useNavigate } from "react-router-dom";
+
 
 export function HomePage(){
     const [produtos, setProdutos] = useState([]);
+    const navigate = useNavigate ();
     const getProdutos = () => {
         apiProdutos.get("/products?limit=15")
             .then((responde) => {
@@ -24,6 +26,7 @@ export function HomePage(){
 
     return(
         <div className={styles.container}>
+            <button onClick={()=> (navigate("/carrinho"))}>ir para o carrinho</button>
        {
         produtos.map((produto) => (
             <CardProduto key={produto.id} produto={produto} />
