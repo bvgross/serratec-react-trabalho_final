@@ -3,11 +3,12 @@ import styles from "./home.module.css"
 import apiProdutos from "../../services/apiProdutos"
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Navbar } from "../../components/navbar/navbar";
 
 
-export function HomePage(){
+export function HomePage() {
     const [produtos, setProdutos] = useState([]);
-    const navigate = useNavigate ();
+    const navigate = useNavigate();
     const getProdutos = () => {
         apiProdutos.get("/products?limit=15")
             .then((responde) => {
@@ -24,14 +25,21 @@ export function HomePage(){
         getProdutos();
     }, []);
 
-    return(
-        <div className={styles.container}>
-            <button onClick={()=> (navigate("/carrinho"))}>ir para o carrinho</button>
-       {
-        produtos.map((produto) => (
-            <CardProduto key={produto.id} produto={produto} />
-        ))
-       }
-       </div>
+    return (
+        <div>
+            
+            <Navbar>
+                
+            </Navbar>
+            <div className={styles.container}>
+
+                <button onClick={() => (navigate("/carrinho"))}>ir para o carrinho</button>
+                {
+                    produtos.map((produto) => (
+                        <CardProduto key={produto.id} produto={produto} />
+                    ))
+                }
+            </div>
+        </div>
     )
 }
