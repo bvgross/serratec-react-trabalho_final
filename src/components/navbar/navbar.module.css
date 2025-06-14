@@ -1,5 +1,5 @@
 .navbar {
-  width: 100vw; /* Largura total da viewport */
+  width: 100vw; 
   position: sticky;
   top: 0;
   z-index: 100;
@@ -209,9 +209,9 @@
   cursor: pointer;
 }
 
-/* Opcional: hover customizado para logout */
+
 .navItem.logout:hover {
-  color: #d9534f; /* tom de vermelho para indicar saída */
+  color: #d9534f; 
   background: rgba(217, 83, 79, 0.15);
   box-shadow: 0 4px 8px rgba(217, 83, 79, 0.3);
 }
