@@ -1,12 +1,22 @@
-.container{
-    color: white;
-    
+.container {
+  color: white;
 }
 
+/* Página do carrinho */
 .carrinho {
   display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 100vh;
+  flex-direction: column;
+  min-height: 100vh; /* Ocupa toda a altura da tela */
+  background-color: #1e1e1e; /* Cor de fundo opcional */
+}
+
+/* Conteúdo central do carrinho - cresce para empurrar o footer */
+.carrinhoConteudo {
+  flex: 1; /* Empurra o Footer para o fim */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem;
+  color: white;
 }

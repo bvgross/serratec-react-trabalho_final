@@ -4,7 +4,7 @@ import styles from "./about.module.css";
 export function AboutPage(){
 
     return(
-        <Navbar></Navbar>
+        <footer></footer>
 
     )
 }

@@ -7,25 +7,27 @@ export function CarrinhoPage() {
   const { carrinho } = useCarrinho();
   const { total } = useCarrinho();
 
-
   return (
     <div className={styles.carrinho}>
-      <Navbar></Navbar>
-      <div className={styles.container} >
-
-        {
+      <Navbar />
+      
+      <div className={styles.carrinhoConteudo}>
+        {carrinho.length > 0 ? (
           carrinho.map((item) => (
             <div key={item.id}>
-              <p>Produto{item.title}</p>
+              <p>Produto: {item.title}</p>
               <p>Quantidade: {item.quantity}</p>
               <p>R$: {item.price}</p>
-
             </div>
-          ))}
-        <p>Total: R${Number(total).toFixed(2)}</p>
+          ))
+        ) : (
+          <p>Seu carrinho está vazio.</p>
+        )}
 
+        <p>Total: R${Number(total).toFixed(2)}</p>
       </div>
-      <Footer></Footer>
+
+      <Footer />
     </div>
-  )
+  );
 }
