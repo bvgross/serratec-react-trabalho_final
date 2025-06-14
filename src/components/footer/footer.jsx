@@ -6,7 +6,7 @@ export function Footer() {
 
     return (
         <footer className={styles.footer}>
-            <li onClick={() => navigate("/about")}>sobre</li>
+            <li className={styles.about} onClick={() => navigate("/about")}>sobre</li>
 
         </footer>
     )

@@ -40,7 +40,7 @@ export function CadastroPage() {
         postUsuario();
     };
     return (
-        <div>
+        <div className={styles.cadastro}>
             <Navbar></Navbar>
             <form className={styles.form} onSubmit={handleSubmit}>
                 <label>Nome:
@@ -73,8 +73,7 @@ export function CadastroPage() {
                 </label>
                 <button type="submit">Cadastrar</button>
             </form>
-
-            <Footer></Footer>
+             <Footer></Footer>
         </div>
     );
 }

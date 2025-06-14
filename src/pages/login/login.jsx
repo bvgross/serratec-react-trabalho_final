@@ -29,6 +29,7 @@ export function LoginPage() {
             alert("Usuário logado com sucesso!");
             localStorage.setItem("usuariologado", user.email)
             localStorage.setItem("nomeusuariologado", user.name)
+            navigate("/")
         } else {
             alert("Usuário ou senha incorretos.");
         }
@@ -40,7 +41,7 @@ export function LoginPage() {
 
     return (
 
-        <div className={styles.page}>
+        <div className={styles.login}>
             
             <Navbar></Navbar>
             <form className={styles.form} onSubmit={handleSubmit}>

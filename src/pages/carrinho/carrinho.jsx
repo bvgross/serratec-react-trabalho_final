@@ -9,7 +9,7 @@ export function CarrinhoPage() {
 
 
   return (
-    <div>
+    <div className={styles.carrinho}>
       <Navbar></Navbar>
       <div className={styles.container} >
 
