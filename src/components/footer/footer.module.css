@@ -1,0 +1,16 @@
+.footer{
+    background-color: transparent;
+    color: #bbb;
+    bottom: 0;
+    width: 100%;
+    display:flex;
+
+}
+
+.about:hover{
+    cursor: pointer;
+}
+
+.about{
+    list-style-type: none;
+}
