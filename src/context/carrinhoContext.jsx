@@ -34,9 +34,9 @@ export const CarrinhoProvider = (props) => {
 
         }
 
-    console.log(carrinho)
+    alert(`${produto.title} - Adicionado ao carrinho`)
 
-        
+         
         
     //     carrinho.forEach(item=>{
     //         const preco = item.price

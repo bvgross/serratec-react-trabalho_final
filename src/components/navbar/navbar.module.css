@@ -15,3 +15,6 @@
     color: #f0f8ff;
     font-weight: bold;
 }
+.navItens:hover{
+    cursor: pointer;
+}

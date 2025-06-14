@@ -3,6 +3,8 @@ import apiUsuarios from "../../services/apiUsuarios";
 import { Input } from "../../components/Input/Input";
 import styles from "./cadastro.module.css";
 import { Navbar } from "../../components/navbar/navbar";
+import { Footer } from "../../components/footer/footer";
+
 export function CadastroPage() {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
@@ -71,6 +73,8 @@ export function CadastroPage() {
                 </label>
                 <button type="submit">Cadastrar</button>
             </form>
+
+            <Footer></Footer>
         </div>
     );
 }

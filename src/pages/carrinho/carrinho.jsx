@@ -1,6 +1,7 @@
 import { Navbar } from "../../components/navbar/navbar";
 import { useCarrinho } from "../../context/carrinhoContext";
 import styles from "./carrinho.module.css"
+import { Footer } from "../../components/footer/footer";
 
 export function CarrinhoPage() {
   const { carrinho } = useCarrinho();
@@ -24,6 +25,7 @@ export function CarrinhoPage() {
         <p>Total: R${Number(total).toFixed(2)}</p>
 
       </div>
+      <Footer></Footer>
     </div>
   )
 }

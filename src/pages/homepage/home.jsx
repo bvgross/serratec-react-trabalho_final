@@ -4,6 +4,7 @@ import apiProdutos from "../../services/apiProdutos"
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Navbar } from "../../components/navbar/navbar";
+import { Footer } from "../../components/footer/footer";
 
 
 export function HomePage() {
@@ -32,14 +33,15 @@ export function HomePage() {
                 
             </Navbar>
             <div className={styles.container}>
-
-                <button onClick={() => (navigate("/carrinho"))}>ir para o carrinho</button>
                 {
                     produtos.map((produto) => (
                         <CardProduto key={produto.id} produto={produto} />
                     ))
                 }
             </div>
+
+            <Footer></Footer>
+
         </div>
     )
 }

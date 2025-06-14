@@ -1,0 +1,16 @@
+.page{
+    height: 100vh;
+    display:flex ;
+    flex-direction: column;
+}
+
+
+.link{
+    text-decoration: underline;
+    color: white;
+}
+
+.link:hover{
+    cursor: pointer;
+}
+

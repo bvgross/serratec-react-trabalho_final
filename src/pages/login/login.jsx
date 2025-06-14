@@ -2,10 +2,12 @@ import styles from "./login.module.css"
 import { Input } from "../../components/Input/Input"
 import { useEffect, useState } from "react"
 import apiUsuarios from "../../services/apiUsuarios"
-import { useFetcher } from "react-router-dom"
+import { useFetcher, useNavigate } from "react-router-dom"
 import { Navbar } from "../../components/navbar/navbar";
+import { Footer } from "../../components/footer/footer";
 
 export function LoginPage() {
+    const navigate= useNavigate()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [usuarios, setUsuarios] = useState([]);  // estado para lista de usuários
@@ -38,7 +40,8 @@ export function LoginPage() {
 
     return (
 
-        <div>
+        <div className={styles.page}>
+            
             <Navbar></Navbar>
             <form className={styles.form} onSubmit={handleSubmit}>
                 <label>Email:
@@ -52,6 +55,8 @@ export function LoginPage() {
 
                 <button type="submit">Cadastrar</button>
             </form>
+            <a className={styles.link} onClick={()=>navigate("/cadastro")}>cadastrar</a>
+            <Footer></Footer>
         </div>
     )
 }
