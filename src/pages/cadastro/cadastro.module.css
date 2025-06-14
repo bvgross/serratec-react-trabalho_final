@@ -6,9 +6,64 @@
     height: 100vh;
 }
 
-.form{
+.box {
+    width: 36%;
+    height: 87%;
+    background-color: #ffffff;
+    padding: 1.4rem;
+    border-radius: 10px;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 6px 5px rgba(250, 249, 249, 0.2);
+    color: #111;
+}
+
+.divForm {
+    flex-direction: column;
+    text-align: center;
+}
+
+img {
+    width: 7%;
+}
+
+h2 {
+    font-size: 1.2rem;
+    height: 5vh;
+}
+
+form {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    gap: 0.3rem;
+    gap: 0.2rem;
+}
+
+
+label {
+    display: flex;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+input {
+    padding: 0.6rem;
+    width: 98%;
+    border-radius: 6px;
+    border: 0.1px solid;
+}
+
+.divButton {
+    margin-top: 0.5vh;
+    text-align: center;
+}
+
+button {
+    width: 50%;
+    background-color: #0a274d;
+    color: #fff;
+    padding: 0.9rem;
+    border: 0.2px solid;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
 }
