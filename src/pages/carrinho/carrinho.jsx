@@ -3,9 +3,12 @@ import { useCarrinho } from "../../context/carrinhoContext";
 import styles from "./carrinho.module.css"
 import { Footer } from "../../components/footer/footer";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function CarrinhoPage() {
-    const { carrinho, total, setTotal, editarItens } = useCarrinho();
+    const { carrinho, setCarrinho, total, setTotal, editarItens } = useCarrinho();
+
+    const navigate = useNavigate()
 
     const [tipoPagamento, setTipoPagamento] = useState("cartao")
     const [compraConcluida, setCompraConcluida] = useState(false)
@@ -25,6 +28,11 @@ export function CarrinhoPage() {
         const novaQuantidade = Number(value)
         if (isNaN(novaQuantidade) || novaQuantidade < 0) return
         editarItens({ ...item, quantity: novaQuantidade })
+    }
+
+    const handleVoltar = () => {
+        setCarrinho([])
+        navigate("/")
     }
 
     return (
@@ -111,18 +119,25 @@ export function CarrinhoPage() {
                 compraConcluida && (
                     <div className={styles.compraConcluida}>
                         <div className={styles.compraConteudo}>
-                            <p>Obrigado pela sua compra!</p>
-                            <div className={styles.item}>
+                            <p className={styles.agradecimento}>Obrigado pela sua compra!</p>
+                            <div className={styles.itensComprados}>
                                 <p>Você comprou:</p>
                                 {
                                     carrinho.map(item => (
-                                        <div>
-                                            <p>{item.title}</p>
-                                            <p>{item.quantity}</p>
+                                        <div className={styles.itemComprado}>
+                                            <p className={styles.itemCompradoNome}>{item.title}</p>
+                                            <p>
+                                                {item.quantity} {item.quantity == 1 ? "item" : "itens"}
+                                            </p>
                                         </div>
                                     ))
                                 }
                             </div>
+                            <p
+                                className={styles.voltar}
+                                onClick={handleVoltar}>
+                                VOLTAR PARA O INÍCIO
+                            </p>
                         </div>
                     </div>
                 )
