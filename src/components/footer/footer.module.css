@@ -1,16 +1,114 @@
-.footer{
-    background-color: transparent;
-    color: #bbb;
-    bottom: 0;
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+
+/* Rodapé principal */
+.footer {
+  background-color: transparent;
+  color: #bbb;
+  width: 100%;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Container das seções internas */
+.footerContainer {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  text-align: center;
+}
+
+/* Cada bloco (Institucional, Contato, etc.) */
+.section {
+  flex: 1;
+  min-width: 180px;
+}
+
+.section h4 {
+  margin-bottom: 0.6rem;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.section ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* Links clicáveis */
+.link,
+.about {
+  list-style: none;
+  cursor: pointer;
+  padding: 0 1rem;
+  font-weight: 600;
+  color: #bbb;
+  transition: color 0.3s ease;
+}
+
+.link:hover,
+.about:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Ícones das redes sociais */
+.socialIcons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.socialIcons a {
+  color: #bbb;
+  transition: color 0.3s ease;
+}
+
+.socialIcons a:hover {
+  color: #fff;
+}
+
+/* Texto de direitos autorais */
+.copy {
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  color: #888;
+  text-align: center;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .footerContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .section {
     width: 100%;
-    display:flex;
+    text-align: center;
+  }
 
-}
-
-.about:hover{
-    cursor: pointer;
-}
-
-.about{
-    list-style-type: none;
+  .link,
+  .about {
+    display: block;
+    padding: 0.5rem 0;
+  }
 }

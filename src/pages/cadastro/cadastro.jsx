@@ -30,6 +30,11 @@ export function CadastroPage() {
             alert("As senhas não coincidem!");
             return;
         }
+        if (!name.trim() || !password.trim() || !confirmPass.trim() || !email.trim() || !cpf.trim() || !phone.trim() || !address.trim()) {
+            alert("Todos os campos devem ser preenchidos");
+            return;
+        }
+
         try {
             const response = await apiUsuarios.post("/users", user);
             console.log("Usuário cadastrado", response.data);
@@ -48,34 +53,42 @@ export function CadastroPage() {
         <div className={styles.cadastro}>
             <Navbar></Navbar>
             <div className={styles.box}>
+                <img src={perfil} alt="perfil" />
+                <h2>Cadastrar Nova Conta</h2>
                 <div className={styles.divForm}>
-                    <img src={perfil} alt="perfil" />
-                    <h2>Cadastrar Nova Conta</h2>
+
                     <form onSubmit={handleSubmit}>
-                        <label>Nome</label>
-                        <input type="text" placeholder="Digite seu nome" value={name} onChange={(e) =>
-                            setName(e.target.value)} />
-                        <label>E-mail</label>
-                        <input type="email" placeholder="Digite seu e-mail" value={email} onChange={(e) =>
-                            setEmail(e.target.value)} />
 
-                        <label>CPF</label>
-                        <input type="text" placeholder="Digite seu CPF" value={cpf} onChange={(e) =>
-                            setCpf(e.target.value)} />
+                        <div className={styles.linha}>
+                            <input type="text" placeholder="Digite seu nome" value={name} onChange={(e) =>
+                                setName(e.target.value)} />
 
-                        <label>Telefone</label>
-                        <input type="text" placeholder="Digite seu telefone" value={phone} onChange={(e) =>
-                            setPhone(e.target.value)} />
 
-                        <label>Endereço</label>
-                        <input type="text" placeholder="Digite seu endereço" value={address} onChange={(e) =>
-                            setAddress(e.target.value)} />
 
-                        <label>Senha</label>
-                        <input type="password" placeholder="Digite sua senha" value={password} onChange={(e) =>
-                            setPassword(e.target.value)} />
+                            <input type="email" placeholder="Digite seu e-mail" value={email} onChange={(e) =>
+                                setEmail(e.target.value)} />
+                        </div>
 
-                        <label>Confirmar Senha</label>
+
+                        <div className={styles.linha}>
+                            <input type="text" placeholder="Digite seu CPF" value={cpf} onChange={(e) =>
+                                setCpf(e.target.value.replace(/\D/g, ''))} minLength={11} maxLength={11} />
+
+
+                            <input type="text" placeholder="Digite seu telefone" value={phone} onChange={(e) =>
+                                setPhone(e.target.value.replace(/\D/g, ''))} minLength={11} maxLength={11} />
+                        </div>
+
+                        <div className={styles.linha}>
+                            <input type="text" placeholder="Digite seu endereço" value={address} onChange={(e) =>
+                                setAddress(e.target.value)} />
+
+
+                            <input type="password" placeholder="Digite sua senha" value={password} onChange={(e) =>
+                                setPassword(e.target.value)} />
+                        </div>
+
+
                         <input type="password" placeholder="Confirme sua senha" value={confirmPass}
                             onChange={(e) => setConfirmPass(e.target.value)} />
 
