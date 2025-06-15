@@ -1,79 +1,99 @@
-import { useState } from "react";
-import apiUsuarios from "../../services/apiUsuarios";
-import { Input } from "../../components/Input/Input";
-import styles from "./cadastro.module.css";
-import { Navbar } from "../../components/navbar/navbar";
-import { Footer } from "../../components/footer/footer";
+import styles from './navbar.module.css';
+import { useNavigate } from 'react-router-dom';
+import { ShoppingCart, Home, User, LogIn, LogOut, Search } from 'lucide-react';
+import { useCarrinho } from '../../context/carrinhoContext';
+import { useState } from 'react';
 
-export function CadastroPage() {
-    const [name, setName] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPass, setConfirmPass] = useState("");
-    const [email, setEmail] = useState("");
-    const [cpf, setCpf] = useState("");
-    const [phone, setPhone] = useState("");
-    const [address, setAddress] = useState("");
-    const postUsuario = async () => {
-        const user = {
-            name,
-            password,
-            email,
-            cpf,
-            phone,
-            address
-        };
-        if (password !== confirmPass) {
-            alert("As senhas não coincidem!");
-            return;
-        }
-        try {
-            const response = await apiUsuarios.post("/users", user);
-            console.log("Usuário cadastrado", response.data);
-            alert("Usuário cadastrado com sucesso!");
-        } catch (erro) {
-            console.error("Erro ao cadastrar:", erro);
-            alert("Erro ao cadastrar usuário.");
-        }
-    };
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        postUsuario();
-    };
-    return (
-        <div className={styles.cadastro}>
-            <Navbar></Navbar>
-            <form className={styles.form} onSubmit={handleSubmit}>
-                <label>Nome:
-                    <Input type="text" placeholder="Nome" value={name} onChange={(e) =>
-                        setName(e.target.value)} />
-                </label>
-                <label>Senha:
-                    <Input type="password" placeholder="Senha" value={password} onChange={(e) =>
-                        setPassword(e.target.value)} />
-                </label>
-                <label>Confirmar Senha:
-                    <Input type="password" placeholder="Confirmar Senha" value={confirmPass}
-                        onChange={(e) => setConfirmPass(e.target.value)} />
-                </label>
-                <label>Email:
-                    <Input type="email" placeholder="Email" value={email} onChange={(e) =>
-                        setEmail(e.target.value)} />
-                </label>
-                <label>CPF:
-                    <Input type="text" placeholder="CPF" value={cpf} onChange={(e) =>
-                        setCpf(e.target.value)} />
-                </label>
-                <label>Telefone:
-                    <Input type="text" placeholder="Telefone" value={phone} onChange={(e) =>
-                        setPhone(e.target.value)} />
-                </label>
-                <label>Endereço:
-                    <Input type="text" placeholder="Endereço" value={address} onChange={(e) =>
-                        setAddress(e.target.value)} />
-                </label>
-                <button type="submit">Cadastrar</button>
-            </form>
-             <Footer></Footer>
-        </div>
-    );
+export function Navbar() {
+  const irPara = useNavigate();
+  const { carrinho } = useCarrinho();
+  const nomeUsuario = localStorage.getItem("nomeusuariologado");
+
+  const quantidadeCarrinho = carrinho.reduce((acc, item) => acc + item.quantity, 0);
+
+  const [busca, setBusca] = useState("");
+  const [categoria, setCategoria] = useState("");
+
+  const categorias = [
+    "electronics",
+    "jewelery",
+    "men's clothing",
+    "women's clothing"
+  ];
+
+  const categoriasPT = {
+    electronics: "Eletrônicos",
+    jewelery: "Joias",
+    "men's clothing": "Roupas Masculinas",
+    "women's clothing": "Roupas Femininas"
+  };
+
+  const handleBuscar = () => {
+    irPara(`/?busca=${encodeURIComponent(busca)}&categoria=${encodeURIComponent(categoria)}`);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("nomeusuariologado");
+    localStorage.removeItem("usuariologado");
+    irPara("/");
+  };
+
+  return (
+    <nav className={styles.navbar}>
+      <div className={styles.logo} onClick={() => irPara("/")}>
+        🛍️ <span className={styles.logoText}>SerraStore</span>
+      </div>
+
+      <div className={styles.buscaContainer}>
+        <input
+          type="text"
+          placeholder="Buscar produtos..."
+          value={busca}
+          onChange={(e) => setBusca(e.target.value)}
+        />
+        <select value={categoria} onChange={(e) => setCategoria(e.target.value)}>
+          <option value="">Todas as categorias</option>
+          {categorias.map((cat) => (
+            <option key={cat} value={cat}>
+              {categoriasPT[cat]}
+            </option>
+          ))}
+        </select>
+        <button onClick={handleBuscar}><Search size={16} /></button>
+      </div>
+
+      <ul className={styles.navItens}>
+        <li className={styles.navItem} onClick={() => irPara("/")}>
+          <Home size={20} />
+          <span>Início</span>
+        </li>
+
+        <li className={styles.navItem} onClick={() => irPara("/carrinho")}>
+          <ShoppingCart size={20} />
+          <span>Carrinho</span>
+          {quantidadeCarrinho > 0 && (
+            <span className={styles.cartBadge}>{quantidadeCarrinho}</span>
+          )}
+        </li>
+
+        {nomeUsuario ? (
+          <>
+            <li className={styles.navItem}>
+              <User size={20} />
+              <span>{nomeUsuario}</span>
+            </li>
+            <li className={styles.navItem} onClick={handleLogout} style={{ cursor: 'pointer' }}>
+              <LogOut size={20} />
+              <span>Sair</span>
+            </li>
+          </>
+        ) : (
+          <li className={styles.navItem} onClick={() => irPara("/login")}>
+            <LogIn size={20} />
+            <span>Entrar</span>
+          </li>
+        )}
+      </ul>
+    </nav>
+  );
 }
