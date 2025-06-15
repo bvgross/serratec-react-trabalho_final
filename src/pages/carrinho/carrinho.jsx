@@ -2,9 +2,21 @@ import { Navbar } from "../../components/navbar/navbar";
 import { useCarrinho } from "../../context/carrinhoContext";
 import styles from "./carrinho.module.css"
 import { Footer } from "../../components/footer/footer";
+import { useEffect, useState } from "react";
 
 export function CarrinhoPage() {
-    const { carrinho, total, editarItens } = useCarrinho();
+    const { carrinho, total, setTotal, editarItens } = useCarrinho();
+
+    const [tipoPagamento, setTipoPagamento] = useState("cartao")
+    const [compraConcluida, setCompraConcluida] = useState(false)
+
+    const descontos = {
+        pix: 0.85,
+        boleto: 0.90,
+        cartao: 1
+    };
+
+    const totalComDesconto = (total * descontos[tipoPagamento]).toFixed(2);
 
     const handleChange = (item) => (e) => {
 
@@ -14,7 +26,6 @@ export function CarrinhoPage() {
         if (isNaN(novaQuantidade) || novaQuantidade < 0) return
         editarItens({ ...item, quantity: novaQuantidade })
     }
-
 
     return (
         <div className={styles.container}>
@@ -44,12 +55,78 @@ export function CarrinhoPage() {
                     ) : (
                         <p>Seu carrinho está vazio.</p>
                     )}
-
                 </div>
+                {carrinho.length > 0 ? (
+                    <div className={styles.pagamento}>
+                        <label className={styles.tipoPagamento}>
+                            <input
+                                name="tipoPagamento"
+                                type="radio"
+                                value="pix"
+                                checked={tipoPagamento === "pix"}
+                                onChange={(e) => setTipoPagamento(e.target.value)}
+                            />
+                            <p className={styles.tipoPagamentoText}>
+                                Pix (15% de desconto)
+                            </p>
+                        </label>
+                        <label className={styles.tipoPagamento}>
+                            <input
+                                name="tipoPagamento"
+                                type="radio"
+                                value="boleto"
+                                checked={tipoPagamento === "boleto"}
+                                onChange={(e) => setTipoPagamento(e.target.value)}
+                            />
+                            <p className={styles.tipoPagamentoText}>
+                                Boleto (10% de desconto)
+                            </p>
+                        </label>
+                        <label className={styles.tipoPagamento}>
+                            <input
+                                name="tipoPagamento"
+                                type="radio"
+                                value="cartao"
+                                checked={tipoPagamento === "cartao"}
+                                onChange={(e) => setTipoPagamento(e.target.value)}
+                            />
+                            <p className={styles.tipoPagamentoText}>
+                                Cartão de crédito
+                            </p>
+                        </label>
+                    </div>
+                ) : ""}
                 <div className={styles.checkout}>
-                    <p>Total: R$ {Number(total).toFixed(2)}</p>
+                    <p className={styles.totalText}>
+                        Total: <span className={styles.totalValor}>R$ {totalComDesconto}</span>
+                    </p>
+                    <p
+                        className={styles.comprar}
+                        onClick={() => setCompraConcluida(true)}>
+                        COMPRAR
+                    </p>
                 </div>
             </div>
+            {
+                compraConcluida && (
+                    <div className={styles.compraConcluida}>
+                        <div className={styles.compraConteudo}>
+                            <p>Obrigado pela sua compra!</p>
+                            <div className={styles.item}>
+                                <p>Você comprou:</p>
+                                {
+                                    carrinho.map(item => (
+                                        <div>
+                                            <p>{item.title}</p>
+                                            <p>{item.quantity}</p>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
             <Footer />
         </div>
     );

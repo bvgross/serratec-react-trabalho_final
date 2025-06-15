@@ -53,7 +53,7 @@ export const CarrinhoProvider = (props) => {
 
         <carrinhoContext.Provider
             value={{
-                adicionarItens, editarItens, carrinho, total
+                adicionarItens, editarItens, carrinho, total, setTotal
             }}
         >
             {props.children}
