@@ -36,7 +36,7 @@
   min-width: 180px;
 }
 
-.titulo {
+.section h4 {
   margin-bottom: 0.6rem;
   font-size: 1rem;
   color: #fff;
@@ -94,11 +94,8 @@
 }
 
 /* RESPONSIVO */
-@media (max-width: 926px) {
+@media (max-width: 768px) {
   .footerContainer {
-    display: flex;
-    justify-content: space-between;
-    font-size: .7rem;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
@@ -113,9 +110,5 @@
   .about {
     display: block;
     padding: 0.5rem 0;
-  }
-
-  .titulo {
-    font-size: .7rem;
   }
 }
