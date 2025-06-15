@@ -2,6 +2,7 @@ import { Button } from "../button/button";
 import styles from './cardProduto.module.css';
 import { useState } from "react";
 import { useCarrinho} from "../../context/carrinhoContext"
+import { FaCartPlus, FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 export function CardProduto({produto}) {
 
@@ -16,12 +17,31 @@ export function CardProduto({produto}) {
                 <img src={produto.image} alt={produto.title} />
             
                 <p className={styles.description}>{descricao}</p>
-                <button onClick={() => serVerDescricao(!verDescricao)}>
-                    {verDescricao ? 'Ver menos' : 'Ver mais'}
+             <div className={styles.botoesContainer}>
+                <button
+                    className={styles.botaoDescricao}
+                    onClick={() => serVerDescricao(!verDescricao)}
+                >
+                    {verDescricao ? (
+                        <>
+                            Ver menos <FaChevronUp />
+                        </>
+                    ) : (
+                        <>
+                            Ver mais <FaChevronDown />
+                        </>
+                    )}
                 </button>
-                
-            <p>R$ {produto.price}</p>
-            <Button onClick={() => adicionarItens(produto)}> Adicionar ao Carrinho</Button>
+
+                <button
+  className={styles.botaoCarrinho}
+  onClick={() => adicionarItens(produto)}
+>
+  <FaCartPlus /> Adicionar ao Carrinho
+</button>
+            </div>
+
+            <p className={styles.preco}>R$ {produto.price}</p>
         </div>
     );
 }
