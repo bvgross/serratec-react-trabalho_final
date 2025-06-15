@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 
 export function RotaPrivada({ children }) {
-  const usuarioLogado = localStorage.getItem("usuarioLogado");
+  const usuarioLogado = localStorage.getItem("usuariologado");
 
   if (!usuarioLogado) {
     return <Navigate to="/login" />; // redireciona se não tiver login
