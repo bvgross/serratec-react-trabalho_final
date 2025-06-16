@@ -1,0 +1,42 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0.5rem;
+    width: 250px;
+    box-shadow: 0 6px 5px rgba(250, 249, 249, 0.2);
+    color:#111;
+    height: 400px;
+}
+
+
+img {
+    max-height: 100px;
+}
+
+h2 {
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+    height: 5rem;
+}
+
+.imgContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.description {
+    font-size: 0.7rem;
+    color: #000000;
+}
+
+button{
+    font-size: 0.7rem;
+
+}
+
