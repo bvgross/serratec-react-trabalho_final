@@ -1,12 +1,320 @@
-.container{
-    color: white;
-    
+.main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 0;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url('https://highsales.digital/images/blog/criar-loja-virtual.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-color: rgba(0, 0, 0, 0.6); 
+  background-blend-mode: overlay; 
+  max-width: 100%;
+  min-height: 100vh;
+  background-size: 100% auto;     
+}
+
+
 
 .carrinho {
   display: flex;
+  gap: 1rem;
+  margin: 1rem;
+  flex-direction: column;
+  width: 350px
+}
+
+.carrinhoConteudo {
+  width: 350px;
+  background-color: rgba(51, 51, 51, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: white;
+  font-size: .7rem;
+  gap: .3rem;
+  padding: .8rem;
+  border-radius: 10px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(68, 68, 68, 0.7);
+  width: 100%;
+  padding: .5rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.item:hover {
+  background-color: #7ea3d3;
+  color: #111;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: default;
+}
+
+.itemQuantidadePreco {
+  margin-left: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.itemName {
+  width: 200px;
+}
+
+.quantidade {
+  display: flex;
+  align-items: center;
+  width: 2rem;
+  font-size: .6rem;
+  color: #ddd;
+}
+
+.quantidadeText {
+  width: 2.5rem;
+  padding: .1rem 0 0 .2rem;
+  border-radius: 3px;
+  border: none;
+  background-color: #bbb;
+  transition: transform 0.1s ease;
+}
+
+.quantidadeText:hover {
+  transform: scale(1.3);
+  transition: transform 0.1s ease;
+}
+
+.preco {
+  width: 4rem;
+  font-size: .75rem;
+}
+
+.pagamentoECheckout {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.pagamento {
+  font-size: .7rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 200px;
+  background-color:  rgba(51, 51, 51, 0.7);
+  color: white;
+  padding: .8rem;
+  border-radius: 10px;
+}
+
+.tipoPagamento {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  align-items: center;
+  width: 100%;
+  padding: .3rem 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 5px;
+}
+
+.tipoPagamento:hover {
+  background-color: #7ea3d3;
+  color: #111;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tipoPagamentoText {
+  display: inline-block;
+  text-align: left;
+  width: 100%
+}
+
+.tipoPagamento input[type="radio"] {
+  margin: 0;
+  padding: 0;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+  width: 165px;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(51, 51, 51, 0.7);
+  color: white;
+  padding: .8rem;
+  border-radius: 10px;
+}
+
+.totalText {
+  color: #aaa;
+  font-size: .90rem;
+}
+
+.totalValor {
+  color: #fff;
+}
+
+.comprar {
+  font-size: 1.2rem;
+  background-color: #7ea3d3;
+  color: #eee;
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.comprar:hover {
+  color: #111;
+  background-color: #5fe7cf;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px #5fe7cf;
+}
+
+.compraConcluida {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 5rem;
+  background-color: #0009;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.compraConteudo {
+  font-size: 0.8rem;
+  color: #ccc;
+  background-color: rgba(34, 34, 34, 0.75);
+  padding: 2rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.agradecimento {
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.itensComprados {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.itemComprado {
+  background-color: rgba(17, 17, 17, 0.7);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 500px;
+  font-size: 1rem;
+  padding: .7rem;
+  border-radius: 5px;
+}
+
+.itemCompradoNome {
+  width: 350px;
+}
+
+.voltar {
+  align-self: center;
+  font-size: 1.2rem;
+  background-color: #7ea3d3;
+  color: #eee;
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.voltar:hover {
+  color: #111;
+  background-color: #5fe7cf;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px #5fe7cf;
+}
+
+@media (min-width: 580px) {
+
+  .carrinho {
+    width: 550px;
+    flex-direction: row;
+  }
+
+  .carrinhoConteudo {
+    font-size: 1rem;
+  }
+
+  .quantidade {
+    font-size: 1rem;
+  }
+
+  .quantidadeText {
+    font-size: 1rem;
+  }
+
+  .preco {
+    font-size: 1rem;
+    width: 5rem;
+  }
+
+  .pagamentoECheckout {
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 100vh;
+  }
+
+  .pagamento {
+    width: 190px;
+    font-size: .8rem;
+  }
+
+  .checkout {
+    width: 190px;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .totalValor {
+    font-size: 1rem;
+  }
+
+  .comprar {
+    font-size: 1.5rem;
+  }
+
+  .compraConteudo {
+    font-size: 1rem;
+  }
+
+  .agradecimento {
+    font-size: 1rem;
+  }
+
+  .itemComprado {
+    font-size: 1.2rem;
+  }
+
+  .voltar {
+    font-size: 1.5rem;
+  }
 }
