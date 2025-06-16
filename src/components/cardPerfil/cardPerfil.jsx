@@ -25,10 +25,10 @@ export function CardPerfil({ imagem, nome, github, descricao }) {
             )}
 
             <a
+                className={styles.github}
                 href={`https://github.com/${github}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={styles.github}
             >
                 @{github}
             </a>

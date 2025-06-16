@@ -57,7 +57,6 @@ export function HomePage() {
                     transition={{ duration: 0.8 }}
                 >
                     <h1>SerraStore</h1>
-                    <p>Designs exclusivos para mentes criativas.</p>
                 </motion.div>
             </section>
 

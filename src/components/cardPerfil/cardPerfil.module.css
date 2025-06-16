@@ -4,7 +4,7 @@
   border-radius: 16px;
   padding: 1.5rem;
   margin: 1rem;
-  width: 240px;
+  width: 330px;
   text-align: center;
   color: #ffffff;
   backdrop-filter: blur(8px);
@@ -42,29 +42,32 @@
   overflow: hidden;
   position: relative;
   transition: max-height 0.4s ease;
+  color: #eee;
+  text-align: left;
+}
+
+.github {
+  color: #aaa;
 }
 
 .expandida {
-  max-height: 20em;
+  max-height: 1000px;
 }
 
 .verMaisBtn {
   background: none;
   border: none;
-  color: #000000;
+  color: #ddd;
   font-weight: bold;
   cursor: pointer;
   padding: 0;
   font-size: 0.9rem;
   text-decoration: underline;
   transition: color 0.3s ease;
+  margin-bottom: 1rem;
 }
 
 .verMaisBtn:hover {
   color: #000000;
   text-shadow: 0 0 6px #9affec;
-}
-
-.github {
-  color: #aaa;
 }
