@@ -22,7 +22,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 5rem;
   color: #fff;
 }
 
@@ -63,14 +62,3 @@
   justify-items: center;
 }
 
-.homeWrapper {
-  background: url("/imagens/dsfdsfdsf.png") no-repeat center center;
-  background-size: cover;
-  background-attachment: fixed;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 5rem;
-  color: #fff;
-}

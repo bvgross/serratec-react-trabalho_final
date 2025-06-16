@@ -22,9 +22,11 @@ export function HomePage() {
     }, []);
 
     return (
+    
+    
         <div className={styles.homeWrapper}>
-            <Navbar />
-
+             <Navbar />
+            
             <section className={styles.heroSection}>
                 <motion.div
                     className={styles.heroContent}
