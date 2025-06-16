@@ -1,25 +1,17 @@
 import { Navbar } from "../../components/navbar/navbar";
 import { useCarrinho } from "../../context/carrinhoContext";
-import styles from "./carrinho.module.css";
+import styles from "./carrinho.module.css"
 import { Footer } from "../../components/footer/footer";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export function CarrinhoPage() {
-    const {
-        carrinho,
-        setCarrinho,
-        total,
-        setTotal,
-        editarItens,
-        limparCarrinho
-    } = useCarrinho();
+    const { carrinho, setCarrinho, total, setTotal, editarItens } = useCarrinho();
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
-    const [tipoPagamento, setTipoPagamento] = useState("cartao");
-    const [compraConcluida, setCompraConcluida] = useState(false);
-    const [itensComprados, setItensComprados] = useState([]);
+    const [tipoPagamento, setTipoPagamento] = useState("cartao")
+    const [compraConcluida, setCompraConcluida] = useState(false)
 
     const descontos = {
         pix: 0.85,
@@ -30,23 +22,18 @@ export function CarrinhoPage() {
     const totalComDesconto = (total * descontos[tipoPagamento]).toFixed(2);
 
     const handleChange = (item) => (e) => {
-        const value = e.target.value;
-        if (value === "") return;
-        const novaQuantidade = Number(value);
-        if (isNaN(novaQuantidade) || novaQuantidade < 0) return;
-        editarItens({ ...item, quantity: novaQuantidade });
-    };
+
+        const value = e.target.value
+        if (value === "") return
+        const novaQuantidade = Number(value)
+        if (isNaN(novaQuantidade) || novaQuantidade < 0) return
+        editarItens({ ...item, quantity: novaQuantidade })
+    }
 
     const handleVoltar = () => {
-        setCarrinho([]);
-        navigate("/");
-    };
-
-    const handleComprar = () => {
-        setItensComprados(carrinho);  // salva os itens para exibir
-        setCompraConcluida(true);
-        limparCarrinho();             // limpa o carrinho após a compra
-    };
+        setCarrinho([])
+        navigate("/")
+    }
 
     return (
         <div className={styles.container}>
@@ -78,7 +65,7 @@ export function CarrinhoPage() {
                     )}
                 </div>
                 <div className={styles.pagamentoECheckout}>
-                    {carrinho.length > 0 && (
+                    {carrinho.length > 0 ? (
                         <div className={styles.pagamento}>
                             <label className={styles.tipoPagamento}>
                                 <input
@@ -117,45 +104,46 @@ export function CarrinhoPage() {
                                 </span>
                             </label>
                         </div>
-                    )}
+                    ) : ""}
                     <div className={styles.checkout}>
                         <p className={styles.totalText}>
                             Total: <span className={styles.totalValor}>R$ {totalComDesconto}</span>
                         </p>
                         <p
                             className={styles.comprar}
-                            onClick={handleComprar}
-                        >
+                            onClick={() => setCompraConcluida(true)}>
                             COMPRAR
                         </p>
                     </div>
                 </div>
             </div>
-
-            {compraConcluida && (
-                <div className={styles.compraConcluida}>
-                    <div className={styles.compraConteudo}>
-                        <p className={styles.agradecimento}>Obrigado pela sua compra!</p>
-                        <div className={styles.itensComprados}>
-                            <p>Você comprou:</p>
-                            {itensComprados.map((item, index) => (
-                                <div key={index} className={styles.itemComprado}>
-                                    <p className={styles.itemCompradoNome}>{item.title}</p>
-                                    <p>
-                                        {item.quantity} {item.quantity === 1 ? "item" : "itens"}
-                                    </p>
-                                </div>
-                            ))}
+            {
+                compraConcluida && (
+                    <div className={styles.compraConcluida}>
+                        <div className={styles.compraConteudo}>
+                            <p className={styles.agradecimento}>Obrigado pela sua compra!</p>
+                            <div className={styles.itensComprados}>
+                                <p>Você comprou:</p>
+                                {
+                                    carrinho.map((item, index) => (
+                                        <div key={index} className={styles.itemComprado}>
+                                            <p className={styles.itemCompradoNome}>{item.title}</p>
+                                            <p>
+                                                {item.quantity} {item.quantity == 1 ? "item" : "itens"}
+                                            </p>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                            <p
+                                className={styles.voltar}
+                                onClick={handleVoltar}>
+                                VOLTAR PARA O INÍCIO
+                            </p>
                         </div>
-                        <p
-                            className={styles.voltar}
-                            onClick={handleVoltar}
-                        >
-                            VOLTAR PARA O INÍCIO
-                        </p>
                     </div>
-                </div>
-            )}
+                )
+            }
             <Footer />
         </div>
     );

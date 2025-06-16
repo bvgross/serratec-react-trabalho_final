@@ -1,11 +1,14 @@
 import { Navigate } from "react-router-dom";
+import { useCarrinho } from "../context/carrinhoContext";
 
 export function RotaPrivada({ children }) {
   const usuarioLogado = localStorage.getItem("usuariologado");
+  const { limparCarrinho } = useCarrinho();
 
   if (!usuarioLogado) {
-    return <Navigate to="/login" />; // redireciona se não tiver login
+    limparCarrinho();  
+    return <Navigate to="/login" />;
   }
 
-  return children; // mostra a página protegida se estiver logado
+  return children;
 }
