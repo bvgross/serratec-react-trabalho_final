@@ -1,8 +1,9 @@
-import styles from './navbar.module.css';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ShoppingCart, Home, User, LogIn, LogOut, Search, UserPlus } from 'lucide-react';
 import { useCarrinho } from '../../context/carrinhoContext';
-import { useState } from 'react';
+import apiProdutos from '../../services/apiProdutos';
+import styles from './navbar.module.css';
 
 export function Navbar() {
   const irPara = useNavigate();
@@ -13,13 +14,7 @@ export function Navbar() {
 
   const [busca, setBusca] = useState("");
   const [categoria, setCategoria] = useState("");
-
-  const categorias = [
-    "electronics",
-    "jewelery",
-    "men's clothing",
-    "women's clothing"
-  ];
+  const [categorias, setCategorias] = useState([]);
 
   const categoriasPT = {
     electronics: "Eletrônicos",
@@ -27,6 +22,12 @@ export function Navbar() {
     "men's clothing": "Roupas Masculinas",
     "women's clothing": "Roupas Femininas"
   };
+
+  useEffect(() => {
+    apiProdutos.get("/products/categories")
+      .then(res => setCategorias(res.data))
+      .catch(err => console.error("Erro ao buscar categorias:", err));
+  }, []);
 
   const handleBuscar = () => {
     irPara(`/?busca=${encodeURIComponent(busca)}&categoria=${encodeURIComponent(categoria)}`);
@@ -56,7 +57,7 @@ export function Navbar() {
           <option value="">Todas as categorias</option>
           {categorias.map((cat) => (
             <option key={cat} value={cat}>
-              {categoriasPT[cat]}
+              {categoriasPT[cat] || cat}
             </option>
           ))}
         </select>
