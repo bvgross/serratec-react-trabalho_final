@@ -64,55 +64,57 @@ export function CarrinhoPage() {
                         <p>Seu carrinho está vazio.</p>
                     )}
                 </div>
-                {carrinho.length > 0 ? (
-                    <div className={styles.pagamento}>
-                        <label className={styles.tipoPagamento}>
-                            <input
-                                name="tipoPagamento"
-                                type="radio"
-                                value="pix"
-                                checked={tipoPagamento === "pix"}
-                                onChange={(e) => setTipoPagamento(e.target.value)}
-                            />
-                            <p className={styles.tipoPagamentoText}>
-                                Pix (15% de desconto)
-                            </p>
-                        </label>
-                        <label className={styles.tipoPagamento}>
-                            <input
-                                name="tipoPagamento"
-                                type="radio"
-                                value="boleto"
-                                checked={tipoPagamento === "boleto"}
-                                onChange={(e) => setTipoPagamento(e.target.value)}
-                            />
-                            <p className={styles.tipoPagamentoText}>
-                                Boleto (10% de desconto)
-                            </p>
-                        </label>
-                        <label className={styles.tipoPagamento}>
-                            <input
-                                name="tipoPagamento"
-                                type="radio"
-                                value="cartao"
-                                checked={tipoPagamento === "cartao"}
-                                onChange={(e) => setTipoPagamento(e.target.value)}
-                            />
-                            <p className={styles.tipoPagamentoText}>
-                                Cartão de crédito
-                            </p>
-                        </label>
+                <div className={styles.pagamentoECheckout}>
+                    {carrinho.length > 0 ? (
+                        <div className={styles.pagamento}>
+                            <label className={styles.tipoPagamento}>
+                                <input
+                                    name="tipoPagamento"
+                                    type="radio"
+                                    value="pix"
+                                    checked={tipoPagamento === "pix"}
+                                    onChange={(e) => setTipoPagamento(e.target.value)}
+                                />
+                                <span className={styles.tipoPagamentoText}>
+                                    Pix (15% de desconto)
+                                </span>
+                            </label>
+                            <label className={styles.tipoPagamento}>
+                                <input
+                                    name="tipoPagamento"
+                                    type="radio"
+                                    value="boleto"
+                                    checked={tipoPagamento === "boleto"}
+                                    onChange={(e) => setTipoPagamento(e.target.value)}
+                                />
+                                <span className={styles.tipoPagamentoText}>
+                                    Boleto (10% de desconto)
+                                </span>
+                            </label>
+                            <label className={styles.tipoPagamento}>
+                                <input
+                                    name="tipoPagamento"
+                                    type="radio"
+                                    value="cartao"
+                                    checked={tipoPagamento === "cartao"}
+                                    onChange={(e) => setTipoPagamento(e.target.value)}
+                                />
+                                <span className={styles.tipoPagamentoText}>
+                                    Cartão de crédito
+                                </span>
+                            </label>
+                        </div>
+                    ) : ""}
+                    <div className={styles.checkout}>
+                        <p className={styles.totalText}>
+                            Total: <span className={styles.totalValor}>R$ {totalComDesconto}</span>
+                        </p>
+                        <p
+                            className={styles.comprar}
+                            onClick={() => setCompraConcluida(true)}>
+                            COMPRAR
+                        </p>
                     </div>
-                ) : ""}
-                <div className={styles.checkout}>
-                    <p className={styles.totalText}>
-                        Total: <span className={styles.totalValor}>R$ {totalComDesconto}</span>
-                    </p>
-                    <p
-                        className={styles.comprar}
-                        onClick={() => setCompraConcluida(true)}>
-                        COMPRAR
-                    </p>
                 </div>
             </div>
             {
@@ -123,8 +125,8 @@ export function CarrinhoPage() {
                             <div className={styles.itensComprados}>
                                 <p>Você comprou:</p>
                                 {
-                                    carrinho.map(item => (
-                                        <div className={styles.itemComprado}>
+                                    carrinho.map((item, index) => (
+                                        <div key={index} className={styles.itemComprado}>
                                             <p className={styles.itemCompradoNome}>{item.title}</p>
                                             <p>
                                                 {item.quantity} {item.quantity == 1 ? "item" : "itens"}
