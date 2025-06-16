@@ -18,7 +18,7 @@
 }
 
 .imagem {
-  width: 100px;
+  width: 120px;
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
@@ -29,7 +29,7 @@
 
 .cardPer h2 {
   font-size: 1.2rem;
-  margin: 1rem 0 1.2rem 0; 
+  margin: 1rem 0 1.2rem 0;
   color: #d6f9f1;
 }
 
@@ -38,14 +38,14 @@
   color: #010a18;
   margin: 0.5rem 0 0.8rem 0;
   line-height: 1.4;
-  max-height: 4.2em; 
+  max-height: 4.2em;
   overflow: hidden;
   position: relative;
   transition: max-height 0.4s ease;
 }
 
 .expandida {
-  max-height: 20em; 
+  max-height: 20em;
 }
 
 .verMaisBtn {
@@ -63,4 +63,8 @@
 .verMaisBtn:hover {
   color: #000000;
   text-shadow: 0 0 6px #9affec;
+}
+
+.github {
+  color: #aaa;
 }
