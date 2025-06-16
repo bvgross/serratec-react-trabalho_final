@@ -3,11 +3,11 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  padding-top: 0;
 }
 
 .container {
   display: flex;
-  align-items: center;
   flex-direction: column;
   min-height: 100vh;
   background-color: #1e1e1e;
@@ -100,7 +100,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
-  width: 220px;
+  width: 200px;
   background-color: #333;
   color: white;
   padding: .8rem;
@@ -152,7 +152,7 @@
 
 .totalText {
   color: #aaa;
-  font-size: .95rem;
+  font-size: .90rem;
 }
 
 .totalValor {
@@ -285,7 +285,7 @@
   }
 
   .totalValor {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .comprar {
