@@ -1,6 +1,13 @@
+.main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 0;
+}
+
 .container {
   display: flex;
-  align-items: center;
   flex-direction: column;
   min-height: 100vh;
   background-color: #1e1e1e;
@@ -8,13 +15,14 @@
 
 .carrinho {
   display: flex;
-  flex: 1;
   gap: 1rem;
   margin: 1rem;
   flex-direction: column;
+  width: 350px
 }
 
 .carrinhoConteudo {
+  width: 350px;
   background-color: #333;
   display: flex;
   flex-direction: column;
@@ -28,7 +36,9 @@
 
 .item {
   display: flex;
+  justify-content: space-between;
   background-color: #444;
+  width: 100%;
   padding: .5rem;
   border-radius: 5px;
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -49,7 +59,7 @@
 }
 
 .itemName {
-  width: 9rem;
+  width: 200px;
 }
 
 .quantidade {
@@ -79,11 +89,18 @@
   font-size: .75rem;
 }
 
+.pagamentoECheckout {
+  display: flex;
+  gap: 0.8rem;
+}
+
 .pagamento {
   font-size: .7rem;
   display: flex;
-  flex-direction: column;
+  justify-content: flex-start;
   align-items: flex-start;
+  flex-direction: column;
+  width: 200px;
   background-color: #333;
   color: white;
   padding: .8rem;
@@ -92,9 +109,12 @@
 
 .tipoPagamento {
   display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  align-items: center;
+  width: 100%;
   padding: .3rem 0;
   transition: background-color 0.3s ease, color 0.3s ease;
-  width: 100%;
   border-radius: 5px;
 }
 
@@ -105,12 +125,24 @@
 }
 
 .tipoPagamentoText {
-  margin-left: .5rem;
+  display: inline-block;
+  text-align: left;
+  width: 100%
+}
+
+.tipoPagamento input[type="radio"] {
+  margin: 0;
+  padding: 0;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
 .checkout {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  width: 165px;
+  justify-content: space-around;
   align-items: center;
   background-color: #333;
   color: white;
@@ -120,6 +152,7 @@
 
 .totalText {
   color: #aaa;
+  font-size: .90rem;
 }
 
 .totalValor {
@@ -210,4 +243,68 @@
   background-color: #5fe7cf;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px #5fe7cf;
+}
+
+@media (min-width: 580px) {
+
+  .carrinho {
+    width: 550px;
+    flex-direction: row;
+  }
+
+  .carrinhoConteudo {
+    font-size: 1rem;
+  }
+
+  .quantidade {
+    font-size: 1rem;
+  }
+
+  .quantidadeText {
+    font-size: 1rem;
+  }
+
+  .preco {
+    font-size: 1rem;
+    width: 5rem;
+  }
+
+  .pagamentoECheckout {
+    flex-direction: column;
+  }
+
+  .pagamento {
+    width: 190px;
+    font-size: .8rem;
+  }
+
+  .checkout {
+    width: 190px;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .totalValor {
+    font-size: 1rem;
+  }
+
+  .comprar {
+    font-size: 1.5rem;
+  }
+
+  .compraConteudo {
+    font-size: 1rem;
+  }
+
+  .agradecimento {
+    font-size: 1rem;
+  }
+
+  .itemComprado {
+    font-size: 1.2rem;
+  }
+
+  .voltar {
+    font-size: 1.5rem;
+  }
 }

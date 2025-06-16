@@ -1,0 +1,27 @@
+.cont {
+  background-color: #1e1e1e;
+  padding: 90px;
+  color: white;
+  text-align: center;
+  height: 94.8vh;
+  /* overflow: hidden; */
+  /* box-sizing: border-box; */
+
+}
+
+.cabecalho {
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+h1{
+  color: white;
+  text-align: center;
+  height: 120px;
+}
