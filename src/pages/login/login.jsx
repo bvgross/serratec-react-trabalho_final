@@ -30,6 +30,7 @@ export function LoginPage() {
             alert("Usuário logado com sucesso!");
             localStorage.setItem("usuariologado", user.email);
             localStorage.setItem("nomeusuariologado", user.name);
+            localStorage.setItem("enderecousuariolocado", user.address);
             navigate("/");
         } else {
             alert("Usuário ou senha incorretos.");
