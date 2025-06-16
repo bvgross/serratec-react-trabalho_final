@@ -1,29 +1,66 @@
 .cardPer {
-  background-color: #fff;
-  padding: 16px;
-  margin: 12px;
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 1rem;
+  width: 240px;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  width: 220px;
+  color: #ffffff;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cardPer:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 255, 195, 0.25);
 }
 
 .imagem {
   width: 100px;
-  height: 100px;
+  height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 12px;
+  margin-bottom: 0.8rem;
+  border: 3px solid #3bb68d;
+  box-shadow: 0 0 8px rgba(59, 182, 141, 0.5);
 }
 
 .cardPer h2 {
-  color: black;
   font-size: 1.2rem;
-  margin: 8px 0;
+  margin: 1rem 0 1.2rem 0; 
+  color: #d6f9f1;
 }
 
-.cardPer p {
-  color: black;
-  font-size: 1rem;
-  margin: 4px 0;
+.descricao {
+  font-size: 0.9rem;
+  color: #010a18;
+  margin: 0.5rem 0 0.8rem 0;
+  line-height: 1.4;
+  max-height: 4.2em; 
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.4s ease;
+}
+
+.expandida {
+  max-height: 20em; 
+}
+
+.verMaisBtn {
+  background: none;
+  border: none;
+  color: #000000;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.verMaisBtn:hover {
+  color: #000000;
+  text-shadow: 0 0 6px #9affec;
 }

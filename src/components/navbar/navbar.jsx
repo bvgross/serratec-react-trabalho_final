@@ -1,12 +1,12 @@
 import styles from './navbar.module.css';
 import { useNavigate } from 'react-router-dom';
-import { ShoppingCart, Home, User, LogIn, LogOut, Search } from 'lucide-react';
+import { ShoppingCart, Home, User, LogIn, LogOut, Search, UserPlus } from 'lucide-react';
 import { useCarrinho } from '../../context/carrinhoContext';
 import { useState } from 'react';
 
 export function Navbar() {
   const irPara = useNavigate();
-  const { carrinho, limparCarrinho } = useCarrinho();  // Importar limparCarrinho
+  const { carrinho, limparCarrinho } = useCarrinho();  
   const nomeUsuario = localStorage.getItem("nomeusuariologado");
 
   const quantidadeCarrinho = carrinho.reduce((acc, item) => acc + item.quantity, 0);
@@ -35,7 +35,7 @@ export function Navbar() {
   const handleLogout = () => {
     localStorage.removeItem("nomeusuariologado");
     localStorage.removeItem("usuariologado");
-    limparCarrinho();   // Limpa o carrinho no logout
+    limparCarrinho();  
     irPara("/");
   };
 
@@ -83,16 +83,22 @@ export function Navbar() {
               <User size={20} />
               <span>{nomeUsuario}</span>
             </li>
-            <li className={styles.navItem} onClick={handleLogout} style={{ cursor: 'pointer' }}>
+            <li className={styles.navItem} onClick={handleLogout}>
               <LogOut size={20} />
               <span>Sair</span>
             </li>
           </>
         ) : (
-          <li className={styles.navItem} onClick={() => irPara("/login")}>
-            <LogIn size={20} />
-            <span>Entrar</span>
-          </li>
+          <>
+            <li className={styles.navItem} onClick={() => irPara("/login")}>
+              <LogIn size={20} />
+              <span>Entrar</span>
+            </li>
+            <li className={styles.navItem} onClick={() => irPara("/cadastro")}>
+              <UserPlus size={20} />
+              <span>Cadastrar</span>
+            </li>
+          </>
         )}
       </ul>
     </nav>
