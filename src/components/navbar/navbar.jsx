@@ -1,25 +1,20 @@
-import styles from './navbar.module.css';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ShoppingCart, Home, User, LogIn, LogOut, Search } from 'lucide-react';
+import { ShoppingCart, Home, User, LogIn, LogOut, Search, UserPlus } from 'lucide-react';
 import { useCarrinho } from '../../context/carrinhoContext';
-import { useState } from 'react';
+import apiProdutos from '../../services/apiProdutos';
+import styles from './navbar.module.css';
 
 export function Navbar() {
   const irPara = useNavigate();
-  const { carrinho, limparCarrinho } = useCarrinho();  // Importar limparCarrinho
+  const { carrinho, limparCarrinho } = useCarrinho();  
   const nomeUsuario = localStorage.getItem("nomeusuariologado");
 
   const quantidadeCarrinho = carrinho.reduce((acc, item) => acc + item.quantity, 0);
 
   const [busca, setBusca] = useState("");
   const [categoria, setCategoria] = useState("");
-
-  const categorias = [
-    "electronics",
-    "jewelery",
-    "men's clothing",
-    "women's clothing"
-  ];
+  const [categorias, setCategorias] = useState([]);
 
   const categoriasPT = {
     electronics: "Eletrônicos",
@@ -28,6 +23,12 @@ export function Navbar() {
     "women's clothing": "Roupas Femininas"
   };
 
+  useEffect(() => {
+    apiProdutos.get("/products/categories")
+      .then(res => setCategorias(res.data))
+      .catch(err => console.error("Erro ao buscar categorias:", err));
+  }, []);
+
   const handleBuscar = () => {
     irPara(`/?busca=${encodeURIComponent(busca)}&categoria=${encodeURIComponent(categoria)}`);
   };
@@ -35,7 +36,7 @@ export function Navbar() {
   const handleLogout = () => {
     localStorage.removeItem("nomeusuariologado");
     localStorage.removeItem("usuariologado");
-    limparCarrinho();   // Limpa o carrinho no logout
+    limparCarrinho();  
     irPara("/");
   };
 
@@ -56,7 +57,7 @@ export function Navbar() {
           <option value="">Todas as categorias</option>
           {categorias.map((cat) => (
             <option key={cat} value={cat}>
-              {categoriasPT[cat]}
+              {categoriasPT[cat] || cat}
             </option>
           ))}
         </select>
@@ -83,16 +84,22 @@ export function Navbar() {
               <User size={20} />
               <span>{nomeUsuario}</span>
             </li>
-            <li className={styles.navItem} onClick={handleLogout} style={{ cursor: 'pointer' }}>
+            <li className={styles.navItem} onClick={handleLogout}>
               <LogOut size={20} />
               <span>Sair</span>
             </li>
           </>
         ) : (
-          <li className={styles.navItem} onClick={() => irPara("/login")}>
-            <LogIn size={20} />
-            <span>Entrar</span>
-          </li>
+          <>
+            <li className={styles.navItem} onClick={() => irPara("/login")}>
+              <LogIn size={20} />
+              <span>Entrar</span>
+            </li>
+            <li className={styles.navItem} onClick={() => irPara("/cadastro")}>
+              <UserPlus size={20} />
+              <span>Cadastrar</span>
+            </li>
+          </>
         )}
       </ul>
     </nav>

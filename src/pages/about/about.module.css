@@ -1,27 +1,98 @@
 .cont {
-  background-color: #1e1e1e;
-  padding: 90px;
+  background-image: url("https://wallpapercave.com/wp/wp3018007.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 4rem 2rem;
   color: white;
   text-align: center;
-  height: 94.8vh;
-  /* overflow: hidden; */
-  /* box-sizing: border-box; */
-
+  min-height: 100vh;
+  backdrop-filter: brightness(0.9) blur(2px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
 }
 
+/* Cabeçalho principal */
 .cabecalho {
   margin-bottom: 30px;
   font-size: 2rem;
+  text-shadow: 2px 2px 5px #000;
+  width: 100%;
+  max-width: 1200px;
 }
 
+/* Grid dos cards: flex com wrap e espaçamento */
 .grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  width: 100%;
 }
 
-h1{
+/* Cards individuais */
+.cardPer {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 0;
+  width: 240px;
+  text-align: center;
+  color: #ffffff;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0;
+}
+
+.cardPer:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 255, 195, 0.25);
+}
+
+.imagem {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.8rem;
+  border: 3px solid #3bb68d;
+  box-shadow: 0 0 8px rgba(59, 182, 141, 0.5);
+}
+
+.cardPer h2 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: #d6f9f1;
+}
+
+.cardPer a {
+  display: inline-block;
+  margin-top: 0.6rem;
+  text-decoration: none;
+  font-weight: bold;
+  color: #70ffe3;
+  transition: color 0.3s ease;
+}
+
+.cardPer a:hover {
+  color: #1dd7a3;
+  text-shadow: 0 0 6px #9affec;
+}
+
+.descricao {
+  font-size: 0.85rem;
+  color: #d0e4de;
+  margin-top: 0.4rem;
+}
+
+h1 {
   color: white;
   text-align: center;
   height: 120px;
+  margin: 0;
 }
