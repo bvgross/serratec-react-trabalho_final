@@ -10,6 +10,8 @@ export function CarrinhoPage() {
 
     const navigate = useNavigate()
 
+    const endereco = localStorage.getItem("enderecousuariolocado")
+
     const [tipoPagamento, setTipoPagamento] = useState("cartao")
     const [compraConcluida, setCompraConcluida] = useState(false)
 
@@ -106,16 +108,20 @@ export function CarrinhoPage() {
                                 </label>
                             </div>
                         ) : ""}
-                        <div className={styles.checkout}>
-                            <p className={styles.totalText}>
-                                Total: <span className={styles.totalValor}>R$ {totalComDesconto}</span>
-                            </p>
-                            <p
-                                className={styles.comprar}
-                                onClick={() => setCompraConcluida(true)}>
-                                COMPRAR
-                            </p>
-                        </div>
+                        {carrinho.length > 0 ? (
+                            <div className={styles.checkout}>
+                                <p className={styles.totalText}>
+                                    Total: <span className={styles.totalValor}>R$ {totalComDesconto}</span>
+                                </p>
+                                <p
+                                    className={styles.comprar}
+                                    onClick={() => setCompraConcluida(true)}>
+                                    COMPRAR
+                                </p>
+                            </div>
+                        ) : (
+                            ""
+                        )}
                     </div>
                 </div>
                 {
@@ -135,6 +141,7 @@ export function CarrinhoPage() {
                                             </div>
                                         ))
                                     }
+                                    <p className={styles.endereco}>Seu produto será entregue no endereço: {endereco}</p>
                                 </div>
                                 <p
                                     className={styles.voltar}
