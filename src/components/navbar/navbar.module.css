@@ -3,7 +3,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: linear-gradient(135deg, #0ff3ba, #9d7dd8, #555353);
+  background: linear-gradient(135deg, #519fd3, #5c2638, #555353);
   background-size: 600% 600%;
   animation: degradeAnim 10s ease infinite;
   backdrop-filter: saturate(180%) blur(10px);
