@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Navbar } from "../../components/navbar/navbar";
 import { Footer } from "../../components/footer/footer";
 import { CardProduto } from "../../components/cardProduto/cardProduto";
@@ -10,16 +10,40 @@ import { motion } from "framer-motion";
 export function HomePage() {
     const [produtos, setProdutos] = useState([]);
     const navigate = useNavigate();
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const busca = queryParams.get("busca") || "";
+    const categoria = queryParams.get("categoria") || "";
 
-    const getProdutos = () => {
-        apiProdutos.get("/products?limit=15")
-            .then((res) => setProdutos(res.data))
-            .catch((error) => console.error("Erro ao buscar produtos:", error));
+    const getProdutos = async () => {
+        try {
+            const response = await apiProdutos.get("/products");
+            let produtosRecebidos = response.data;
+
+
+            if (busca || categoria) {
+                if (categoria) {
+                    produtosRecebidos = produtosRecebidos.filter(
+                        (produto) => produto.category === categoria
+                    );
+                }
+
+                if (busca) {
+                    produtosRecebidos = produtosRecebidos.filter((produto) =>
+                        produto.title.toLowerCase().includes(busca.toLowerCase())
+                    );
+                }
+            }
+
+            setProdutos(produtosRecebidos);
+        } catch (error) {
+            console.error("Erro ao buscar produtos:", error);
+        }
     };
 
     useEffect(() => {
         getProdutos();
-    }, []);
+    }, [location.search]);
 
     return (
         <div className={styles.homeWrapper}>
