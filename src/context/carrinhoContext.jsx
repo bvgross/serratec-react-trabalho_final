@@ -9,10 +9,10 @@ export const CarrinhoProvider = (props) => {
     const [total, setTotal] = useState(0)
 
     useEffect(() => {
-    
-    const novoTotal = carrinho.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    setTotal(novoTotal);
-}, [carrinho]);
+
+        const novoTotal = carrinho.reduce((acc, item) => acc + item.price * item.quantity, 0);
+        setTotal(novoTotal);
+    }, [carrinho]);
 
     function adicionarItens(produto) {
 
@@ -24,7 +24,7 @@ export const CarrinhoProvider = (props) => {
                     return { ...item, quantity: item.quantity + 1 };
                 }
                 return item;
-                
+
             });
             setCarrinho(novoCarrinho)
         }
@@ -34,29 +34,36 @@ export const CarrinhoProvider = (props) => {
 
         }
 
-    alert(`${produto.title} - Adicionado ao carrinho`)
+    }
 
-         
-        
-    //     carrinho.forEach(item=>{
-    //         const preco = item.price
-    //         const quantitade = item.quantity
-    //         const totalItem = preco * quantitade
-    //         setTotal(total + totalItem) 
-    //     })   
+    function editarItens(produto) {
 
-    //    console.log(total)
+        const novoCarrinho = carrinho.map((item) => {
+            if (item.id === produto.id) {
+                return { ...item, quantity: produto.quantity };
+            }
+            return item;
+        });
+
+        setCarrinho(novoCarrinho)
 
     }
 
+    function limparCarrinho() {
+        setCarrinho([]);
+        setTotal(0);
+    }
+
     return (
+
         <carrinhoContext.Provider
             value={{
-                adicionarItens, carrinho, total
+                adicionarItens, editarItens, carrinho, setCarrinho, total, setTotal, limparCarrinho
             }}
         >
             {props.children}
         </carrinhoContext.Provider>
+
     )
 
 }
@@ -65,6 +72,3 @@ export function useCarrinho() {
     return useContext(carrinhoContext)
 
 }
-
-
-

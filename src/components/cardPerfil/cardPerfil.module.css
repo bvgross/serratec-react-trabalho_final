@@ -1,0 +1,29 @@
+.cardPer {
+  background-color: #fff;
+  padding: 16px;
+  margin: 12px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: 220px;
+}
+
+.imagem {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+.cardPer h2 {
+  color: black;
+  font-size: 1.2rem;
+  margin: 8px 0;
+}
+
+.cardPer p {
+  color: black;
+  font-size: 1rem;
+  margin: 4px 0;
+}
