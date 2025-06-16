@@ -1,10 +1,9 @@
 .homeWrapper {
-  background: linear-gradient(135deg, #0f0f10, #1a1a2e);
+  background: linear-gradient(135deg, #000000, #1a1a2e);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 5rem;
   color: #fff;
 }
 
@@ -45,14 +44,4 @@
   justify-items: center;
 }
 
-.homeWrapper {
-  background: url("/imagens/dsfdsfdsf.png") no-repeat center center;
-  background-size: cover;
-  background-attachment: fixed;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 5rem;
-  color: #fff;
-}
+

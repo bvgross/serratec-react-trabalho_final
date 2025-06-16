@@ -9,18 +9,20 @@
     width: 250px;
     box-shadow: 0 6px 5px rgba(250, 249, 249, 0.2);
     color:#111;
-    height: 400px;
+    min-height: 400px;
 }
 
 
-img {
+.img {
     max-height: 100px;
-}
+    width: 100%;
+    object-fit:scale-down
+  }
 
-h2 {
+.title  {
     font-size: 0.9rem;
     margin: 0.5rem 0;
-    height: 5rem;
+    height: 4rem;
 }
 
 .imgContainer {
@@ -28,23 +30,25 @@ h2 {
     justify-content: center;
     align-items: center;
     width: 100%;
+    
 }
 
 .description {
     font-size: 0.7rem;
     color: #000000;
+    margin-top: 1rem;
 }
 
 .botoesContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-top: 12px;
   gap: 12px;
   flex-wrap: wrap;
 }
 
-/* Botão Ver Mais / Ver Menos */
+
 .botaoDescricao {
   background: none;
   color: #007bff;
@@ -57,6 +61,7 @@ h2 {
   display: flex;
   align-items: center;
   gap: 6px;
+  
 }
 
 .botaoDescricao:hover {
@@ -64,12 +69,12 @@ h2 {
   color: white;
 }
 
-/* Botão Adicionar ao Carrinho */
+
 .botaoCarrinho {
   background-color: #00b894;
   color: white;
   border: none;
-  padding: 10px 16px;
+  padding: 10px 3px;
   border-radius: 12px;
   font-weight: bold;
   font-size: 1rem;
@@ -79,6 +84,7 @@ h2 {
   align-items: center;
   gap: 8px;
   box-shadow: 0 4px 12px rgba(0, 184, 148, 0.3);
+  width: 100%;
 }
 
 .botaoCarrinho:hover {
@@ -87,9 +93,25 @@ h2 {
   background-color: #019875;
 }
 
-/* Preço */
+
 .preco {
   font-size: 1.2rem;
   font-weight: bold;
   margin-top: 10px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.efeitoClique {
+  animation: pulse 0.3s ease;
 }
