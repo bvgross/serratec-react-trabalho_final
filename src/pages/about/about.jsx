@@ -27,7 +27,8 @@ export function AboutPage() {
                         imagem="/imagens/bruno.jpg"
                         nome="Bruno Gross"
                         github="bvgross"
-                        descricao=""
+                        descricao="Arquiteto de formação, sempre me interessei pela área de tecnologia, especialmente programação. Já busquei aprender sozinho, mas agora ao participar do Serratec consigo, finalmente, entender como um sistema funciona.
+      Gosto muito de trabalhar em equipe e sou muito curioso, os desafios e problemas me movem."
                     />
                     <CardPerfil
                         imagem="/imagens/leo.png"
