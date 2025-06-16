@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 export function Navbar() {
   const irPara = useNavigate();
-  const { carrinho } = useCarrinho();
+  const { carrinho, limparCarrinho } = useCarrinho();  // Importar limparCarrinho
   const nomeUsuario = localStorage.getItem("nomeusuariologado");
 
   const quantidadeCarrinho = carrinho.reduce((acc, item) => acc + item.quantity, 0);
@@ -35,6 +35,7 @@ export function Navbar() {
   const handleLogout = () => {
     localStorage.removeItem("nomeusuariologado");
     localStorage.removeItem("usuariologado");
+    limparCarrinho();   // Limpa o carrinho no logout
     irPara("/");
   };
 
